@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gradient-to-r from-pink-400 to-yellow-300 p-4">
+    <div class="bg-white p-10 rounded-lg shadow-lg w-full max-w-md md:max-w-lg lg:max-w-xl text-center">
+        <h1 class="text-4xl font-bold text-pink-600 mb-6">Enter Your Name</h1>
+        <input type="text" id="nameInput" placeholder="Enter your name"
+            class="w-full p-4 border-2 border-pink-500 rounded-lg focus:outline-none focus:border-pink-700 transition duration-300 mb-6 text-lg">
+        <button onclick="submitName()"
+            class="w-full bg-pink-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-pink-700 transition duration-300">
+            Submit
+        </button>
+    </div>
+
+    <div id="toast"
+        class="hidden fixed top-5 right-5 bg-red-500 text-white py-3 px-6 rounded-lg shadow-lg flex items-center space-x-2">
+        <span id="toastMessage"></span>
+        <button onclick="closeToast()" class="font-bold">×</button>
+    </div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 3000);
+        }
+
+        function closeToast() {
+            document.getElementById('toast').classList.add('hidden');
+        }
+
+        function submitName() {
+            const name = document.getElementById('nameInput').value.trim();
+            const nameRegex = /^[A-Za-z\s]+$/;
+            
+            if (!name) {
+                showToast('Please enter your name!');
+            } else if (!nameRegex.test(name)) {
+                showToast('Enter a valid name (Letters and Spaces only).');
+            } else {
+                localStorage.setItem('name', name);
+                window.location.href = 'birthday.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

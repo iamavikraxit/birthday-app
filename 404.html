@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body
+    class="flex flex-col min-h-screen bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-6 sm:p-10 relative overflow-hidden text-center">
+
+    <!-- Main Content -->
+    <div class="flex-grow flex flex-col items-center justify-center px-4">
+        <!-- Error Message -->
+        <h1 class="text-7xl font-extrabold text-white animate-bounce">Sorry !!!</h1>
+        <p class="text-2xl sm:text-3xl text-white font-semibold mt-4">Oops! Looks like you're trying to access directly. 🎈🎉
+        </p>
+        <p class="text-lg sm:text-xl text-white font-medium mt-2">Please go back to the Home Page.</p>
+
+        <!-- Back to Home Button -->
+        <a href="index.html"
+            class="mt-6 px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white rounded-full text-lg font-bold shadow-lg transform hover:scale-110 transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Home
+        </a>
+    </div>
+
+    <!-- Floating Balloons -->
+    <div class="absolute inset-0 flex flex-wrap justify-center items-center -z-10">
+        <div class="balloon w-10 h-14 sm:w-14 sm:h-18 bg-pink-400"></div>
+        <div class="balloon w-8 h-12 sm:w-12 sm:h-16 bg-yellow-300"></div>
+        <div class="balloon w-9 h-13 sm:w-13 sm:h-17 bg-red-500"></div>
+        <div class="balloon w-11 h-15 sm:w-15 sm:h-19 bg-blue-400"></div>
+    </div>
+
+    <script>
+        // Fun floating animation for balloons
+        document.addEventListener("DOMContentLoaded", function () {
+            const balloons = document.querySelectorAll(".balloon");
+            balloons.forEach((balloon, index) => {
+                balloon.style.left = `${10 + index * 20}%`;
+                balloon.style.animationDuration = `${10 + index * 2}s`;
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-150px);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-300px);
+                opacity: 0;
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -50px;
+            animation: floating 10s infinite ease-in-out;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .balloon:nth-child(1) {
+            left: 15%;
+            animation-duration: 12s;
+        }
+
+        .balloon:nth-child(2) {
+            left: 35%;
+            animation-duration: 10s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 55%;
+            animation-duration: 14s;
+        }
+
+        .balloon:nth-child(4) {
+            left: 75%;
+            animation-duration: 11s;
+        }
+    </style>
+
+</body>
+
+</html>
