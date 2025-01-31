@@ -24,7 +24,11 @@
         <span id="toastMessage"></span>
         <button onclick="closeToast()" class="font-bold">×</button>
     </div>
-
+    <footer
+        class="fixed bottom-0 left-0 w-full text-center py-2 bg-black/50 backdrop-blur-sm text-white/80 text-xs z-30">
+        <p>Developed by <span class="font-medium">Avik Rakshit with ❤️</span> | Music: Avik Rakshit (Guitar), Surja (Bass),
+            Jishu Sen (Drums)</p>
+    </footer>
     <script>
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -41,7 +45,7 @@
         function submitName() {
             const name = document.getElementById('nameInput').value.trim();
             const nameRegex = /^[A-Za-z\s]+$/;
-            
+
             if (!name) {
                 showToast('Please enter your name!');
             } else if (!nameRegex.test(name)) {
